@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Corretor</title>
+    <link rel="stylesheet" href="style.index.css">
+</head>
+
+<body>
+    <section>
+        <form action="cadastro.php" method="post">
+            <h1 class="title">Cadastro de Corretor</h1>
+            <input type="text" name="name" class="input" placeholder="Digite seu Nome">
+            <input type="text" name="cpf" class="input" placeholder="Digite seu CPF" minlength="11" maxlength="12">
+            <input type="text" name="creci" class="input" placeholder="Digite seu CRECI" minlength="6" maxlength="7">
+            <button type="submit" class="button">Enviar</button>
+        </form>
+    </section>
+</body>
+
+<script>
+    document.querySelector('form').addEventListener('submit', function (e) {
+        const name = document.querySelector('input[name="name"]').value.trim();
+        const cpf = document.querySelector('input[name="cpf"]').value.trim();
+        const creci = document.querySelector('input[name="creci"]').value.trim();
+        let error = "";
+
+        if (!name) {
+            error += "Digite seu nome.\n";
+        }
+        if (cpf.length < 11 || cpf.length > 12) {
+            error += "Digite um CPF válido.\n";
+        }
+        if (creci.length < 6 || creci.length > 7) {
+            error += "Digite um CRECI válido.\n";
+        }
+
+        if (error) {
+            e.preventDefault(); // Impede o envio do formulário
+            alert(error); // Mostra os erros ao usuário
+        }
+    });
+</script>
+
+</html>
