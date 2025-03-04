@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Tipografia - BEM Naming Convention */
+
+/* 1. Fonte padrão do projeto */
+:root {
+    --font-primary: 'Poppins', sans-serif;
+}
+
+/* 3. Cabeçalhos */
+.typography__heading {
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.typography__heading--large {
+    font-size: 2.5rem;
+}
+
+.typography__heading--medium {
+    font-size: 2rem;
+}
+
+.typography__heading--small {
+    font-size: 1.5rem;
+}
+
+/* 4. Texto padrão */
+.typography__text {
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.typography__text--thin {
+    font-weight: 100;
+}
+
+.typography__text--extra-light {
+    font-weight: 200;
+}
+
+.typography__text--light {
+    font-weight: 300;
+}
+
+.typography__text--regular {
+    font-weight: 400;
+}
+
+.typography__text--medium {
+    font-weight: 500;
+}
+
+.typography__text--semi-bold {
+    font-weight: 600;
+}
+
+.typography__text--bold {
+    font-weight: 700;
+}
+
+.typography__text--extra-bold {
+    font-weight: 800;
+}
+
+.typography__text--black {
+    font-weight: 900;
+}
+
+/* 5. Estilos itálicos */
+.typography__text--thin-italic {
+    font-weight: 100;
+    font-style: italic;
+}
+
+.typography__text--extra-light-italic {
+    font-weight: 200;
+    font-style: italic;
+}
+
+.typography__text--light-italic {
+    font-weight: 300;
+    font-style: italic;
+}
+
+.typography__text--regular-italic {
+    font-weight: 400;
+    font-style: italic;
+}
+
+.typography__text--medium-italic {
+    font-weight: 500;
+    font-style: italic;
+}
+
+.typography__text--semi-bold-italic {
+    font-weight: 600;
+    font-style: italic;
+}
+
+.typography__text--bold-italic {
+    font-weight: 700;
+    font-style: italic;
+}
+
+.typography__text--extra-bold-italic {
+    font-weight: 800;
+    font-style: italic;
+}
+
+.typography__text--black-italic {
+    font-weight: 900;
+    font-style: italic;
+}
+

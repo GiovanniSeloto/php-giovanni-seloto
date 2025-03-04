@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+@import "base/reset.css";
+@import "base/typography.css";
+@import "base/colors.css";
+@import "base/variables.css";
+
+/* 2. Garante um comportamento consistente de fontes */
+
+html {
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: var(--font-primary);
+    font-weight: 400;
+    font-style: normal;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}

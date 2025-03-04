@@ -1,0 +1,52 @@
+/* Reset Normalize */
+/* 1. Remove margens e paddings padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 4. Remove estilos padrão de listas */
+ul, ol {
+    list-style: none;
+}
+
+/* 5. Remove decoração padrão de links */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 6. Normaliza elementos de form */
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    border: none;
+    outline: none;
+}
+
+/* 7. Torna botões e inputs clicáveis mais evidentes */
+button {
+    cursor: pointer;
+    background: none;
+}
+
+/* 8. Garante que imagens não saiam do container */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 9. Define um estilo base para tabelas */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* 10. Suaviza fontes para melhor legibilidade */
+body, button, input, select, textarea {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

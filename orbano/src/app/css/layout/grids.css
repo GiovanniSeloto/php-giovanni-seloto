@@ -1,0 +1,4 @@
+/* 3. Define altura mínima e melhora rolagem */
+body {
+    min-height: 100vh;
+}
