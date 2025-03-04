@@ -1,5 +1,5 @@
 "use client";
-import LoginFields from './LoginFields/Pages/LoginFields/LoginFields';
+import LoginFields from "../app/Pages/LoginFields/LoginFields/LoginFields"
 
 export default function TwoColumns() {
   return (
