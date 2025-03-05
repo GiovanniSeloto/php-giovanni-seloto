@@ -1,9 +1,9 @@
 import { useForm, FormProvider } from "react-hook-form";
-import { useValidation } from "@/hooks/resolvers/yup";
+import { yupResolver } from "@hookform/resolvers/yup"
 
 export const FormComponent = ({ children, validationSchema, onSubmit }) => {
     const methods = useForm({
-        resolver: useValidation(validationSchema)
+        resolver: yupResolver(validationSchema)
     })
 
     return(

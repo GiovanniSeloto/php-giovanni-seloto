@@ -3,7 +3,7 @@ import * as yup from "yup"
 export const useValidation = () => {
     /* Para configurar email apenas de um domínio
         .matches(/^[a-zA-Z0-9._%+-]+@empresa\.com$/, "Use um e-mail corporativo (@empresa.com)")*/
-    yup.object().shape({
+    return yup.object().shape({
         email: yup
             .string()
             .trim()

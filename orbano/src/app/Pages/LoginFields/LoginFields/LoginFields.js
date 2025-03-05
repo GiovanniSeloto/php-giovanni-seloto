@@ -2,13 +2,29 @@ import InputFields from "../InputFields";
 import { useValidation } from "@/hooks/resolvers/yup";
 import { FormComponent } from "../FormFields";
 import { useState } from "react";
+import { loginAuthEmail } from "@/firebase/authEmailServices";
+import { useFormContext } from "react-hook-form";
 
 export default function LoginFields() {
 
+    
+const { getValues } = useFormContext()
+    // Recebendo os dados do formulário
+    const formData = getValues()
+
     const [step, setStep] = useState(0)
 
-    const handleClick = () => {
-        if (step < 1) setStep(step + 1);
+    const validationSchema = useValidation()
+
+    const handleClick = async () => {
+        const isValid = await validationSchema.isValid(formData)
+
+        if (isValid && step <= 1) {
+            setStep(step + 1);
+        }
+        else {
+            console.log("Erro na validação")
+        }
     }
 
     const onLoginSubmit = async (data) => {
@@ -24,7 +40,7 @@ export default function LoginFields() {
 
     return (
         <>
-            <FormComponent validationSchema={useValidation} onSubmit={onLoginSubmit}>
+            <FormComponent validationSchema={validationSchema} onSubmit={onLoginSubmit}>
                 {
                     step >= 0 && (
                         <InputFields
@@ -45,9 +61,20 @@ export default function LoginFields() {
                         />
                     )
                 }
-                <button type="Submit" onClick={handleClick} >
-                    Próximo
-                </button>
+                {
+                    step >= 0 && (
+                        <button type="Submit" onClick={handleClick} >
+                            Próximo
+                        </button>
+                    )
+                }
+                {
+                    step >= 1 && (
+                        <button type="Submit">
+                            Entrar
+                        </button>
+                    )
+                }
             </FormComponent>
         </>
     )
