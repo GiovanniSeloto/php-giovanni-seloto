@@ -1,0 +1,14 @@
+.Input__Fields{
+    border-style: solid;
+    border-color: #696B6A ;
+    width: 462px;
+    height: 56px;
+    border-radius: 8 12px;
+    display: flex;
+    margin-top: 5px;
+}
+
+.Error__Mensage{
+    font-size: 13px;
+    color: #b20000;
+}

@@ -1,0 +1,12 @@
+.Content__Link {
+    position: fixed;
+    bottom: 50px;
+    display: flex;
+    gap: 30px; /*Espaçamento entre os links*/
+}
+
+.Link {
+
+    font-size: 12px;
+    color: #262848;
+}

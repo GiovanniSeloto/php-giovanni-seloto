@@ -1,23 +1,17 @@
-import InputFields from "../InputFields";
+import InputFields from "../InputFields/InputFields";
 import { useValidation } from "@/hooks/resolvers/yup";
 import { FormComponent } from "../FormFields";
 import { useState } from "react";
 import { loginAuthEmail } from "@/firebase/authEmailServices";
-import { useFormContext } from "react-hook-form";
+import styles from "./style.module.css"
+import Button from "@/app/components/Button/button";
 
 export default function LoginFields() {
-
-    
-const { getValues } = useFormContext()
-    // Recebendo os dados do formulário
-    const formData = getValues()
-
     const [step, setStep] = useState(0)
 
     const validationSchema = useValidation()
 
     const handleClick = async () => {
-        const isValid = await validationSchema.isValid(formData)
 
         if (isValid && step <= 1) {
             setStep(step + 1);
@@ -41,10 +35,15 @@ const { getValues } = useFormContext()
     return (
         <>
             <FormComponent validationSchema={validationSchema} onSubmit={onLoginSubmit}>
+                <h1 className={styles.Login__Title}>Iniciar Sessão</h1>
+                <div className={styles.Content__New}> 
+                    <aside className={styles.Login__Description}> Ainda não tem uma conta ?</aside>
+                    <button className={styles.New__Login}>Criar Conta</button>
+                </div>
+                <small className={styles.Login_Small_Description}>Isso levará menos de 01 minuto</small>
                 {
                     step >= 0 && (
                         <InputFields
-                            label="Email"
                             type="email"
                             name="email"
                             placeholder="Digite seu email"
@@ -54,7 +53,6 @@ const { getValues } = useFormContext()
                 {
                     step >= 1 && (
                         <InputFields
-                            label="Senha"
                             type="password"
                             name="password"
                             placeholder="Digite sua senha"
@@ -63,16 +61,16 @@ const { getValues } = useFormContext()
                 }
                 {
                     step >= 0 && (
-                        <button type="Submit" onClick={handleClick} >
+                        <Button type="Submit" onClick={handleClick} >
                             Próximo
-                        </button>
+                        </Button>
                     )
                 }
                 {
                     step >= 1 && (
-                        <button type="Submit">
+                        <Button type="Submit">
                             Entrar
-                        </button>
+                        </Button>
                     )
                 }
             </FormComponent>

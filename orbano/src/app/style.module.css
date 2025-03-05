@@ -1,0 +1,21 @@
+.Content__Container {
+    flex: 1;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+}
+
+.Content__Left{
+    width: 65%;
+    height: 100vh;
+    background-color: #0367EF;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.Content__Right{ 
+    flex: 1;   
+    display: flex;
+    justify-content: center;
+}
