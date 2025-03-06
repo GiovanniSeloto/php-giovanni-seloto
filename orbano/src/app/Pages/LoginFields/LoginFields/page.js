@@ -4,7 +4,7 @@ import { FormComponent } from "../FormFields/page";
 import { useState } from "react";
 import { loginAuthEmail } from "@/firebase/authEmailServices";
 import styles from "./style.module.css"
-import Button from "@/app/components/Button/button";
+import Button from "@/app/components/Button/page";
 import { useForm } from "react-hook-form";
 
 export default function LoginFields() {

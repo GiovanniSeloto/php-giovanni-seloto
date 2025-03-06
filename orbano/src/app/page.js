@@ -1,7 +1,7 @@
 "use client";
 import LoginFields from "./Pages/LoginFields/LoginFields/page";
 import styles from "./style.module.css"
-import Links from "./components/LinksLogin/Links";
+import Links from "./components/LinksLogin/page";
 import RegistrationFields from "./Pages/LoginFields/RegistrationFields/page";
 export default function TwoColumns() {
   return (

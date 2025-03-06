@@ -27,4 +27,5 @@ const getValidationSchema = (step) => {
     }
     return yup.object()
 }
+
 export default getValidationSchema

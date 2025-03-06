@@ -4,7 +4,7 @@ import { FormComponent } from "../FormFields/page";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import getValidationSchema from "@/hooks/resolvers/yup";
-import Button from "@/app/components/Button/button";
+import Button from "@/app/components/Button/page";
 
 export default function RegistrationFields() {
 
@@ -39,6 +39,7 @@ export default function RegistrationFields() {
         <>
             <FormComponent validationSchema={selectValidationSchema} onSubmit={onCreateSubmit}>
                 <h1>Bem-Vindo(a)</h1>
+                <span><button>Esqueceu senha!</button></span>
                 {
                     step === 0 && (
                         <InputFields
