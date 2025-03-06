@@ -1,9 +1,9 @@
 import InputFields from "../InputFields/page";
-import { createAuthEmail } from "@/firebase/authEmailServices";
+import { createAuthEmail } from "@/app/firebase/authEmailServices";
 import { FormComponent } from "../FormFields/page";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import getValidationSchema from "@/hooks/resolvers/yup";
+import getValidationSchema from "@/app/hooks/resolvers/yup";
 import Button from "@/app/components/Button/page";
 
 export default function RegistrationFields() {

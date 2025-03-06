@@ -1,21 +1,22 @@
-import { nextCsrf } from "next-csrf";
-import { loginAuthEmail } from "@/app/firebase/authEmailServices";
-import csrfMiddleware from "../Middleware/CsrfMiddleware";
+// pages/api/login.js
+import csrfMiddleware from "../../middleware/csrfMiddleware";
 
-async function handler(req, res) {
-    if(req.method !== "POST"){
-        return res.status(405).json({error: "Método não permitido"})
-    }
+console.log("Middleware CSRF importado:", csrfMiddleware);
+
+const handler = async (req, res) => {
+  await csrfMiddleware(req, res); // Aplica o middleware CSRF antes da lógica do login
+
+  if (req.method === "POST") {
+    const { email, password } = req.body;
     
-    const { email, password } = req.body
-
-    try{
-        await loginAuthEmail(email, password)
-        return res.status(200).json({message: "Login bem sucedido"});
+    try {
+      return res.status(200).json({ message: "Login bem-sucedido" });
+    } catch (error) {
+      return res.status(401).json({ error: "Credenciais inválidas" });
     }
-    catch (error){
-        return res.status(401).json({error: "Credenciais inválidas"})
-    }
-}
+  } else {
+    return res.status(405).json({ error: "Método não permitido" });
+  }
+};
 
-export default csrfMiddleware(handler)
+export default handler;

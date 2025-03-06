@@ -15,7 +15,7 @@ const getValidationSchema = (step) => {
         })
     }
     if (step === 1) {
-        yup.object().shape({
+     yup.object().shape({
             /*Para configuração de senha com determinadas credenciais
             .matches(/[\W_]/, "A senha deve conter pelo menos um caractere especial (@, #, $, etc.)"),*/
             password: yup
