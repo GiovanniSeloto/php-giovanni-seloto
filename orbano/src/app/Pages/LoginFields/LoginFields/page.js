@@ -1,9 +1,8 @@
 import InputFields from "../InputFields/page";
 import getValidationSchema from "@/hooks/resolvers/yup";
 import { FormComponent } from "../FormFields/page";
-import { useState } from "react";
-import { loginAuthEmail } from "@/firebase/authEmailServices";
-import styles from "./style.module.css"
+import { useValidation } from "@/app/hooks/resolvers/yup";
+import { FormComponent } from "../FormFields";
 import Button from "@/app/components/Button/page";
 import { useForm } from "react-hook-form";
 
@@ -26,12 +25,25 @@ export default function LoginFields() {
 
     const onLoginSubmit = async (data) => {
         try {
-            await loginAuthEmail(data.email, data.password)
-            alert("Usuário logado")
-            console.log(data)
+            const response = await fetch("@/Pages/Api/login",{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data)
+            })
+            const result = await response.json()
+
+            if(response.ok){
+                alert("Usuário logado");
+                console.log(result)
+            }
+            else{
+                console.log("Erro ao logar usuário", result.error)
+            }
         }
         catch (error) {
-            console.log("Erro ao logar usuário", error)
+            console.log("Erro conectar com servidor", error)
         }
     }
 
