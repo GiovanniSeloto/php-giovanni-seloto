@@ -1,6 +1,6 @@
 import { useForm, FormProvider } from "react-hook-form";
 import AuthFields from "../../AuthFields";
-import { createAuthEmail } from "@/firebase/authEmailServices";
+import { createAuthEmail } from "@/app/firebase/authEmailServices";
 
 export default function LoginFields() {
 
