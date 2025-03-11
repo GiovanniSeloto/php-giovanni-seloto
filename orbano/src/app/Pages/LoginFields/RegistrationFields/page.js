@@ -3,7 +3,7 @@ import { createAuthEmail } from "@/app/firebase/authEmailServices";
 import { FormComponent } from "../FormFields/page";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import getValidationSchema from "@/app/hooks/resolvers/yup";
+import getValidationSchema from "@/app/hooks/resolvers/page";
 import Button from "@/app/components/Button/page";
 
 export default function RegistrationFields() {
@@ -57,7 +57,6 @@ export default function RegistrationFields() {
                             type="password"
                         />
                     )
-                    
                 }
                 {
                     step === 0 && (

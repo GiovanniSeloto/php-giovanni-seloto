@@ -16,5 +16,4 @@ export default function InputFields({ type,name, label, ...reset }) {
             {errors[name] && <p className={styles.Error__Mensage}> {errors[name].message} </p>}
         </>
     )
-
 }

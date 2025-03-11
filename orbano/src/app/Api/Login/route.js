@@ -1,22 +1,14 @@
-// pages/api/login.js
-import csrfMiddleware from "../../middleware/csrfMiddleware";
+// Protejendo EndPoint da APi
 
-console.log("Middleware CSRF importado:", csrfMiddleware);
+import { csrfVerify } from "../Csrf/page";
 
-const handler = async (req, res) => {
-  await csrfMiddleware(req, res); // Aplica o middleware CSRF antes da lógica do login
-
-  if (req.method === "POST") {
-    const { email, password } = req.body;
-    
-    try {
-      return res.status(200).json({ message: "Login bem-sucedido" });
-    } catch (error) {
-      return res.status(401).json({ error: "Credenciais inválidas" });
-    }
-  } else {
-    return res.status(405).json({ error: "Método não permitido" });
+export default async function handler(req, res){
+  try{
+    await csrfVerify(req, res);
+    res.status(200).json({message: 'Requisição segura!'});
   }
-};
-
-export default handler;
+  catch (error){
+    console.error(error);
+    res.status(403).json({error: 'Falha na verificação CSRF'})
+  }
+}
