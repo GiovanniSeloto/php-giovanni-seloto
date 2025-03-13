@@ -5,7 +5,6 @@ import styles from "./style.module.css";
 import Button from "@/app/components/Button/page";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import Login from "@/app/Api/Login/route";
 
 export default function LoginFields() {
     const [step, setStep] = useState(0);
@@ -34,7 +33,7 @@ export default function LoginFields() {
 
     return (
         <>
-            <FormComponent validationSchema={selectValidationSchema} onSubmit={Login}>
+            <FormComponent validationSchema={selectValidationSchema} >
                 <h1 className={styles.Login__Title}>Iniciar Sessão</h1>
                 <div className={styles.Content__New}>
                     <aside className={styles.Login__Description}>Ainda não tem uma conta?</aside>

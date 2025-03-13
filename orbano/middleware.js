@@ -1,16 +1,20 @@
 import { NextResponse } from "next/server";
-import { csrf } from "./src/app/Api/Csrf/page";
+import { nextCsrf } from "next-csrf";
 
-export default function middleware(req){
-  try{
-    return csrf(req)
-  }
-  catch(error){
-    console.error("Erro no middleware CSRF", error);
-    return NextResponse.json({error: "Falha na autenticação CSFR"}, {status: 403})
-  }
-}
+const { csrfVerify } = nextCsrf({
+  secret: process.env.CSRF_SECRET || "CSRF_SECRET",
+});
 
-export const config = {
-  matcher: "/app/Api"
+export async function middleware(req) {
+  try {
+    console.log("Verificando CSRF Token...");
+    await csrfVerify(req); // Corrigindo a chamada para `csrfVerify`
+    return NextResponse.next();
+  } catch (error) {
+    console.error("Erro na verificação CSRF:", error);
+    return NextResponse.json(
+      { error: "Falha na autenticação CSRF" },
+      { status: 403 }
+    );
+  }
 }

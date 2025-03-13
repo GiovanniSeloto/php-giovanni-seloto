@@ -1,43 +1,57 @@
 "use client";
-import LoginFields from "./Pages/LoginFields/LoginFields/page";
-import styles from "./style.module.css"
+import LoginFields from "./pages/LoginFields/LoginFields/page";
+import styles from "./style.module.css";
 import Links from "./components/LinksLogin/page";
-import RegistrationFields from "./Pages/LoginFields/RegistrationFields/page";
-
 import { useState, useEffect } from "react";
 
 export default function TwoColumns() {
-
   const [csrfToken, setCsrfToken] = useState("");
 
+  // Pega o token CSRF na inicialização
   useEffect(() => {
-    fetch("/api/csrf")
+    fetch("/api/Csrf")
       .then((res) => res.json())
-      .then((data) => setCsrfToken(data.csrfToken))
-      .catch((err) => console.error("Erro ao obter CSRF token:", err));
+      .then((data) => {
+        console.log("Token CSRF recebido:", data.csrfToken);
+        setCsrfToken(data.csrfToken);
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar token CSRF", error);
+      });
   }, []);
 
-  const enviarRequisicao = async () => {
-    const resposta = await fetch("/api/login", {
+  // Função de envio do formulário
+  const handleSubmit = async () => {
+    const email = "gio@gmail.com";  // Pega os dados do formulário (substituir pelo estado)
+    const password = "123456";        // Pega os dados do formulário (substituir pelo estado)
+  
+    const res = await fetch("/api/Login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-CSRF-Token": csrfToken, // Enviando o token
+        "CSRF-Token": csrfToken, // Inclui o token CSRF na requisição
       },
-      body: JSON.stringify({ dado: "teste" }),
+      body: JSON.stringify({
+        email: email,
+        password: password
+      }),
     });
-
-    const resultado = await resposta.json();
-    console.log(resultado);
+  
+    const data = await res.json();
+    console.log("Resposta da API:", data);
   };
+  
 
   return (
     <main className={styles.Content__Container}>
-      <div className={styles.Content__Left}>
-      </div>
+      <div className={styles.Content__Left}></div>
       <div className={styles.Content__Right}>
-        <LoginFields/>
-        <Links/>
+        <LoginFields />
+        {/* Desabilita o botão enquanto o CSRF Token não estiver carregado */}
+        <button onClick={handleSubmit} > 
+          Enviar 
+        </button>
+        <Links />
       </div>
     </main>
   );
