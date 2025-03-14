@@ -1,8 +1,9 @@
 "use client";
-import LoginFields from "./pages/LoginFields/LoginFields/page";
+import LoginFields from "./Pages/LoginFields/LoginFields/page";
 import styles from "./style.module.css";
 import Links from "./components/LinksLogin/page";
 import { useState, useEffect } from "react";
+import RegistrationFields from "./Pages/LoginFields/RegistrationFields/page";
 
 export default function TwoColumns() {
   const [csrfToken, setCsrfToken] = useState("");
@@ -20,35 +21,13 @@ export default function TwoColumns() {
       });
   }, []);
 
-  // Função de envio do formulário
-  const handleSubmit = async () => {
-    const email = "gio@gmail.com";  // Pega os dados do formulário (substituir pelo estado)
-    const password = "123456";        // Pega os dados do formulário (substituir pelo estado)
-  
-    const res = await fetch("/api/Login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "CSRF-Token": csrfToken, // Inclui o token CSRF na requisição
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password
-      }),
-    });
-  
-    const data = await res.json();
-    console.log("Resposta da API:", data);
-  };
-  
-
   return (
     <main className={styles.Content__Container}>
       <div className={styles.Content__Left}></div>
       <div className={styles.Content__Right}>
-        <LoginFields />
+        <LoginFields csrfToken={csrfToken}/>
         {/* Desabilita o botão enquanto o CSRF Token não estiver carregado */}
-        <button onClick={handleSubmit} > 
+        <button > 
           Enviar 
         </button>
         <Links />

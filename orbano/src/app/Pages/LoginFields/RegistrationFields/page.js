@@ -3,10 +3,10 @@ import { createAuthEmail } from "@/app/firebase/authEmailServices";
 import { FormComponent } from "../FormFields/page";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import getValidationSchema from "@/app/hooks/resolvers/page";
+import getValidationSchema from "@/app/hooks/resolvers/route";
 import Button from "@/app/components/Button/page";
 
-export default function RegistrationFields() {
+export default function RegistrationFields({handleSubmit}) {
 
     const [step, setStep] = useState(0)
     const { getValues } = useForm()
@@ -67,7 +67,7 @@ export default function RegistrationFields() {
                 }
                 {
                     step === 1 && (
-                        <Button type="Submit">
+                        <Button type="button" onClick={handleSubmit}>
                             Próximo
                         </Button>
                     )
