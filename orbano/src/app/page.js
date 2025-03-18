@@ -1,12 +1,13 @@
 "use client";
-import LoginFields from "./Pages/LoginFields/LoginFields/page";
+import LoginFields from "./LoginFields/page";
 import styles from "./style.module.css";
 import Links from "./components/LinksLogin/page";
 import { useState, useEffect } from "react";
-import RegistrationFields from "./Pages/LoginFields/RegistrationFields/page";
+import RegistrationFields from "./RegistrationFields/page";
 
 export default function TwoColumns() {
   const [csrfToken, setCsrfToken] = useState("");
+  const [page, setPage] = useState(false)
 
   // Pega o token CSRF na inicialização
   useEffect(() => {
@@ -25,11 +26,12 @@ export default function TwoColumns() {
     <main className={styles.Content__Container}>
       <div className={styles.Content__Left}></div>
       <div className={styles.Content__Right}>
-        <LoginFields csrfToken={csrfToken}/>
+        {page ? <RegistrationFields setPage={setPage}/> : <LoginFields csrfToken={csrfToken} setPage={setPage}/> }
+        {/* <LoginFields /> */}
         {/* Desabilita o botão enquanto o CSRF Token não estiver carregado */}
-        <button > 
+        {/* <button > 
           Enviar 
-        </button>
+        </button> */}
         <Links />
       </div>
     </main>

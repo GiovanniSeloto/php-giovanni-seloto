@@ -12,6 +12,7 @@ const getValidationSchema = (step) => {
                 .min(5)
                 .max(150, "Máximo de caracteres excedido"),
         });
+        return yup.object()
     }
     if (step === 1) {
          yup.object().shape({
@@ -24,7 +25,7 @@ const getValidationSchema = (step) => {
                 .max(20, "Máximo de caracteres excedido")
         })
     }
-    return yup.object()
+
 }
 
 export default getValidationSchema

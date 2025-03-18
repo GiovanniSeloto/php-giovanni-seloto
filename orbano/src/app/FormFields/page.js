@@ -1,4 +1,6 @@
-import { useForm, FormProvider } from "react-hook-form";
+"use client"
+
+import { useForm, FormProvider } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 
 export const FormComponent = ({ children, validationSchema, onSubmit }) => {
