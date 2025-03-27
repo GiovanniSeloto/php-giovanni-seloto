@@ -1,5 +1,4 @@
 import csrf from "csrf";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import {createUserWithEmailAndPassword} from "firebase/auth"
 import { db } from "@/app/lib/firebaseConfig";
 
@@ -22,16 +21,16 @@ export async function POST(req) {
     const { email, password } = await req.json();
 
     // Autenticar o usuário no Firebase Auth
-    const userCredential = await signInWithEmailAndPassword(db, email, password);
+    const userCredential = await createUserWithEmailAndPassword(db, email, password);
     const user = userCredential.user;
 
     return Response.json({
-      message: "Login realizado com sucesso",
+      message: "Cadastro realizado com sucesso",
       uid: user.uid,
       email: user.email,
     });
   } catch (error) {
-    console.error("Erro no login:", error);
-    return Response.json({ error: "Falha na autenticação" }, { status: 401 });
+    console.error("Erro ao Castrar:", error);
+    return Response.json({ error: "Falha no cadastro" }, { status: 401 });
   }
 }

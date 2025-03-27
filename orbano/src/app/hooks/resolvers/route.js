@@ -24,6 +24,7 @@ const getValidationSchema = (step) => {
                 .min(6)
                 .max(20, "Máximo de caracteres excedido")
         })
+        return yup.object()
     }
 
 }
